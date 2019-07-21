@@ -1,3 +1,8 @@
+- name: root login is disabled
+  user:
+    name: root
+    password: "*"
+
 - name: sshd_config is up
   copy:
     src: sshd_config
