@@ -1,0 +1,24 @@
+- hosts: zendora
+
+  vars:
+    ansible_user: root
+    ansible_password: root
+
+  tasks:
+    - name: admin user group is added
+      group:
+        name: "{{ admin_user }}"
+        state: present
+
+    - name: admin user is added
+      user:
+        name: "{{ admin_user }}"
+        group: "{{ admin_user }}"
+        groups: users,wheel
+        password: "{{ admin_pass }}"
+        state: present
+
+    - name: admin user keys are inserted
+      authorized_key:
+        user: "{{ admin_user }}"
+        key: "{{ admin_pubkeys | join('\n') }}"
