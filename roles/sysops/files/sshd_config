@@ -1,0 +1,11 @@
+SyslogFacility AUTHPRIV
+
+PermitRootLogin no
+PasswordAuthentication no
+ChallengeResponseAuthentication no
+UsePAM yes
+AuthorizedKeysFile .ssh/authorized_keys
+
+X11Forwarding yes
+
+Subsystem sftp /usr/libexec/openssh/sftp-server

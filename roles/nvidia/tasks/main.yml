@@ -1,0 +1,34 @@
+# https://rpmfusion.org/Howto/NVIDIA
+
+- name: nvidia driver is installed
+  yum:
+    name:
+      - akmod-nvidia
+      - xorg-x11-drv-nvidia
+      - xorg-x11-drv-nvidia-libs
+    state: present
+
+- name: cuda is installed
+  yum:
+    name:
+      - xorg-x11-drv-nvidia-cuda
+      - xorg-x11-drv-nvidia-cuda-libs
+    state: present
+
+- name: nvidia video acceleration is enabled
+  yum:
+    name:
+      - libva-utils
+      - libva-vdpau-driver
+      - vdpauinfo
+    state: present
+
+- name: nouveau is blacklisted
+  copy:
+    src: blacklist-nouveau.conf
+    dest: /etc/modprobe.d/
+
+- name: nvidia xorg config is up
+  copy:
+    src: 10-nvidia.conf
+    dest: /etc/X11/xorg.conf.d/

@@ -1,0 +1,10 @@
+- hosts: zendora
+  become: yes
+
+  roles:
+    - prerequisites
+    - rpmfusion
+    - sysops
+    - devops
+    - desktop
+    - nvidia

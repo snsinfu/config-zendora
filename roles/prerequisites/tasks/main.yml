@@ -1,0 +1,4 @@
+- name: ansible can configure selinux
+  yum:
+    name: libselinux-python
+    state: present

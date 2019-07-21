@@ -1,0 +1,22 @@
+- name: sshd_config is up
+  copy:
+    src: sshd_config
+    dest: /etc/ssh/
+  notify: restart sshd
+
+- name: system operational tools are installed
+  yum:
+    name:
+      - cpuid
+      - fzf
+      - git
+      - htop
+      - kernel-tools
+      - lm_sensors
+      - mosh
+      - nvi
+      - ripgrep
+      - tmux
+      - vim-enhanced
+      - zsh
+    state: present

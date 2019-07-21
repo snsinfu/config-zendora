@@ -1,0 +1,37 @@
+- name: basic development tools are installed
+  yum:
+    name:
+      - "@development tools"
+      - "@c development tools and libraries"
+      - cmake
+    state: present
+
+# https://docs.docker.com/install/linux/docker-ce/fedora/
+- name: docker-ce stable repository is registered
+  yum_repository:
+    file: docker-ce
+    name: docker-ce-stable
+    description: Docker CE Stable - $basearch
+    baseurl: https://download.docker.com/linux/fedora/$releasever/$basearch/stable
+    gpgkey: https://download.docker.com/linux/fedora/gpg
+    gpgcheck: yes
+
+- name: docker-ce is installed
+  yum:
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+    state: present
+
+- name: docker-ce is activated
+  service:
+    name: docker
+    state: started
+    enabled: yes
+
+- name: admin is a docker user
+  user:
+    name: "{{ admin_user }}"
+    groups: docker
+    append: yes

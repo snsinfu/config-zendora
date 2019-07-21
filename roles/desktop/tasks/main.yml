@@ -1,0 +1,32 @@
+- name: basic xorg packages are installed
+  yum:
+    name:
+      - "@base-x"
+      - "@fonts"
+      - "@hardware support"
+      - "@multimedia"
+      - "@standard"
+    state: present
+
+- name: basic xorg packages are installed
+  yum:
+    name:
+      - qtile   # window manager
+      - scrot   # screen shot
+    state: present
+
+- name: desktop apps are installed
+  yum:
+    name:
+      - audacity
+      - firefox
+      - geeqie
+      - gimp
+      - ibus-mozc
+      - inkscape
+      - krita
+      - lmms
+      - mtpaint
+      - rxvt-unicode-256color
+      - steam
+    state: present
