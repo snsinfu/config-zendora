@@ -15,6 +15,12 @@
       - scrot   # screen shot
     state: present
 
+- name: drivers are installed
+  yum:
+    name:
+      - xboxdrv
+    state: present
+
 - name: desktop apps are installed
   yum:
     name:
