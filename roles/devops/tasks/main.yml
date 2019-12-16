@@ -6,6 +6,12 @@
       - cmake
     state: present
 
+- name: additional development tools are installed
+  yum:
+    name:
+      - wxGTK3-devel
+    state: present
+
 # https://docs.docker.com/install/linux/docker-ce/fedora/
 - name: docker-ce stable repository is registered
   yum_repository:
