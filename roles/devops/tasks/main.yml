@@ -13,6 +13,7 @@
     state: present
 
 # https://docs.docker.com/install/linux/docker-ce/fedora/
+# TODO: Migrate to moby-engine?
 - name: docker-ce stable repository is registered
   yum_repository:
     file: docker-ce
